@@ -44,7 +44,7 @@
     advanceTimer = setTimeout(() => {
       advanceTimer = null;
       next();
-    }, 2000);
+    }, 2500);
   }
 
   function shuffle(arr) {
@@ -111,7 +111,7 @@
       btn.innerHTML = `
         <div class="cube-icon" aria-hidden="true">${renderIcon(opt.icon)}</div>
         <div class="cube-label">${opt.label}</div>
-      `;
+      `.trim();
       btn.addEventListener("pointermove", (e) => {
         const rect = btn.getBoundingClientRect();
         btn.style.setProperty("--x", `${((e.clientX - rect.left) / rect.width) * 100}%`);
@@ -371,6 +371,33 @@
       alert(text);
     }
   }
+
+  const lunaModal = document.getElementById("lunaModal");
+  const lunaFooterBtn = document.getElementById("lunaFooterBtn");
+
+  function openLunaModal() {
+    if (!lunaModal) return;
+    lunaModal.hidden = false;
+    document.body.classList.add("luna-modal-open");
+  }
+
+  function closeLunaModal() {
+    if (!lunaModal) return;
+    lunaModal.hidden = true;
+    document.body.classList.remove("luna-modal-open");
+  }
+
+  if (lunaFooterBtn) {
+    lunaFooterBtn.addEventListener("click", openLunaModal);
+  }
+  if (lunaModal) {
+    lunaModal.querySelectorAll("[data-close-luna-modal]").forEach((el) => {
+      el.addEventListener("click", closeLunaModal);
+    });
+  }
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeLunaModal();
+  });
 
   els.startBtn.addEventListener("click", startGame);
   els.nextBtn.addEventListener("click", next);

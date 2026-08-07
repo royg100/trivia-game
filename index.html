@@ -74,11 +74,23 @@
     </section>
 
     <footer class="luna-footer">
-      <a href="https://mentali.org.il/luna/" target="_blank" rel="noopener noreferrer">
+      <button type="button" class="luna-footer-btn" id="lunaFooterBtn">
         <img src="assets/luna-logo.png" alt="" />
         <span>Created by Luna</span>
-      </a>
+      </button>
     </footer>
+  </div>
+
+  <div class="luna-modal" id="lunaModal" hidden>
+    <div class="luna-modal-backdrop" data-close-luna-modal></div>
+    <div class="luna-modal-card" role="dialog" aria-modal="true" aria-labelledby="lunaModalTitle">
+      <button type="button" class="luna-modal-x" data-close-luna-modal aria-label="סגור">×</button>
+      <img class="luna-modal-logo" src="assets/luna-logo.png" alt="Luna" />
+      <p class="luna-modal-kicker">LUNA</p>
+      <h2 class="luna-modal-title" id="lunaModalTitle">יאללה בוא ותצטרף למשפחה</h2>
+      <p class="luna-modal-body">Find Your Solution — בואו לבנות איתנו את הדבר הבא.</p>
+      <a class="cta luna-modal-cta" href="https://mentali.org.il/luna/" target="_blank" rel="noopener noreferrer">יאללה, אני בפנים</a>
+    </div>
   </div>
 
   <script src="icons.js"></script>
