@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>כמה אתה יודע? | הציונות הדתית</title>
+  <meta name="description" content="משחק טריוויה אינטראקטיבי על הישגי הציונות הדתית בכלכלה ובביטחון" />
+  <meta property="og:title" content="כמה אתה יודע? | הציונות הדתית" />
+  <meta property="og:description" content="לחצו על הקוביות — וגלו את ההישגים" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700;800&family=Roboto:wght@400;500;700&family=Roboto+Slab:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="confetti" id="confetti" aria-hidden="true"></div>
+
+  <div class="app">
+    <header class="topbar">
+      <div class="brand-chip">
+        <img class="brand-logo" src="assets/logo-final.png" alt="הציונות הדתית" />
+      </div>
+      <div class="progress-panel" aria-hidden="true">
+        <div class="progress-meta">
+          <span>התקדמות</span>
+          <span id="progressLabel">0%</span>
+        </div>
+        <div class="progress-wrap">
+          <div class="progress-bar" id="progressBar"></div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Start -->
+    <section class="screen active" id="screen-start">
+      <div class="hero">
+        <div class="hero-badge">משחק הישגים</div>
+        <h1 class="hero-brand"><span>הציונות הדתית</span></h1>
+        <h2>כמה אתה יודע?</h2>
+        <p>לחצו על הקוביות, ענו על שאלות קצרות — וגלו מה באמת קידמנו בכלכלה ובביטחון.</p>
+        <button class="cta" id="startBtn" type="button">יאללה נתחיל</button>
+        <div class="hero-cubes" aria-hidden="true" id="heroCubes"></div>
+      </div>
+    </section>
+
+    <!-- Quiz -->
+    <section class="screen" id="screen-quiz">
+      <div class="quiz-head">
+        <div class="cat-pill" id="category">📈 כלכלה</div>
+        <h2 class="question-title" id="question">שאלה</h2>
+        <div class="score-chip" id="scoreChip">שאלה 1</div>
+      </div>
+      <div class="cubes" id="cubes"></div>
+      <div class="feedback" id="feedback">
+        <strong id="feedbackTitle">נכון!</strong>
+        <p id="feedbackText"></p>
+        <button class="cta" id="nextBtn" type="button">לשאלה הבאה</button>
+      </div>
+    </section>
+
+    <!-- Results -->
+    <section class="screen" id="screen-result">
+      <div class="results">
+        <div class="results-ring" id="resultRing">
+          <div class="results-score" id="resultScore">0<small>מתוך 12</small></div>
+        </div>
+        <h2 id="resultTitle">כל הכבוד!</h2>
+        <p id="resultText"></p>
+        <div class="results-actions">
+          <button class="cta" id="replayBtn" type="button">שחק שוב</button>
+          <button class="cta secondary" id="shareBtn" type="button">שתף תוצאה</button>
+        </div>
+      </div>
+    </section>
+
+    <footer class="luna-footer">
+      <a href="https://mentali.org.il/luna/" target="_blank" rel="noopener noreferrer">
+        <img src="assets/luna-logo.png" alt="" />
+        <span>Created by Luna</span>
+      </a>
+    </footer>
+  </div>
+
+  <script src="icons.js"></script>
+  <script src="questions.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
