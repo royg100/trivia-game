@@ -1,0 +1,2 @@
+[start]
+cmd = "npx --yes serve -l tcp://0.0.0.0:$PORT ."

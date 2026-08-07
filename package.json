@@ -1,0 +1,13 @@
+{
+  "name": "trivia-game",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Interactive Religious Zionism trivia game",
+  "scripts": {
+    "start": "npx --yes serve -l tcp://0.0.0.0:${PORT:-3000} .",
+    "dev": "npx --yes serve -l 3000 ."
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
