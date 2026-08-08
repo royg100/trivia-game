@@ -4,9 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>כמה אתה יודע? | הציונות הדתית</title>
-  <meta name="description" content="משחק טריוויה אינטראקטיבי על הישגי הציונות הדתית בכלכלה ובביטחון" />
+  <meta name="description" content="שאלות ידע כללי — ואחרי כל תשובה ההישג של הציונות הדתית בכלכלה ובביטחון" />
   <meta property="og:title" content="כמה אתה יודע? | הציונות הדתית" />
-  <meta property="og:description" content="לחצו על הקוביות — וגלו את ההישגים" />
+  <meta property="og:description" content="ידע כללי קצר — ואז ההישג שלנו" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700;800&family=Roboto:wght@400;500;700&family=Roboto+Slab:wght@600;700;800&display=swap" rel="stylesheet" />
@@ -34,10 +34,10 @@
     <!-- Start -->
     <section class="screen active" id="screen-start">
       <div class="hero">
-        <div class="hero-badge">משחק הישגים</div>
+        <div class="hero-badge">ידע כללי · הישגים</div>
         <h1 class="hero-brand"><span>הציונות הדתית</span></h1>
         <h2>כמה אתה יודע?</h2>
-        <p>לחצו על הקוביות, ענו על שאלות קצרות — וגלו מה באמת קידמנו בכלכלה ובביטחון.</p>
+        <p>ענו על שאלות ידע כללי — ואחרי כל תשובה תגלו את ההישג שלנו בכלכלה ובביטחון.</p>
         <button class="cta" id="startBtn" type="button">יאללה נתחיל</button>
         <div class="hero-cubes" aria-hidden="true" id="heroCubes"></div>
       </div>
@@ -51,12 +51,20 @@
         <div class="score-chip" id="scoreChip">שאלה 1</div>
       </div>
       <div class="cubes" id="cubes"></div>
-      <div class="feedback" id="feedback">
-        <strong id="feedbackTitle">נכון!</strong>
-        <p id="feedbackText"></p>
-        <button class="cta" id="nextBtn" type="button">לשאלה הבאה</button>
-      </div>
     </section>
+
+    <div class="feedback" id="feedback" hidden>
+      <div class="feedback-backdrop" aria-hidden="true"></div>
+      <div class="feedback-dialog" role="dialog" aria-modal="true" aria-labelledby="achievementTitle">
+        <strong id="feedbackTitle">נכון!</strong>
+        <div class="achievement-card">
+          <span class="achievement-kicker">ההישג שלנו</span>
+          <h3 class="achievement-title" id="achievementTitle"></h3>
+          <p id="feedbackText"></p>
+        </div>
+        <button class="cta" id="nextBtn" type="button">הבא</button>
+      </div>
+    </div>
 
     <!-- Results -->
     <section class="screen" id="screen-result">

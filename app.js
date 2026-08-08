@@ -15,6 +15,7 @@
     scoreChip: document.getElementById("scoreChip"),
     feedback: document.getElementById("feedback"),
     feedbackTitle: document.getElementById("feedbackTitle"),
+    achievementTitle: document.getElementById("achievementTitle"),
     feedbackText: document.getElementById("feedbackText"),
     nextBtn: document.getElementById("nextBtn"),
     resultRing: document.getElementById("resultRing"),
@@ -39,12 +40,17 @@
     }
   }
 
-  function scheduleAdvance() {
+  function hideFeedback() {
     clearAdvanceTimer();
-    advanceTimer = setTimeout(() => {
-      advanceTimer = null;
-      next();
-    }, 2500);
+    els.feedback.classList.remove("show");
+    els.feedback.hidden = true;
+    document.body.classList.remove("feedback-open");
+  }
+
+  function showFeedback() {
+    els.feedback.hidden = false;
+    els.feedback.classList.add("show");
+    document.body.classList.add("feedback-open");
   }
 
   function shuffle(arr) {
@@ -75,7 +81,7 @@
     index = 0;
     score = 0;
     locked = false;
-    els.feedback.classList.remove("show");
+    hideFeedback();
     showScreen("quiz");
     renderQuestion();
   }
@@ -88,7 +94,7 @@
     clearAdvanceTimer();
     const q = currentQuestion();
     locked = false;
-    els.feedback.classList.remove("show");
+    hideFeedback();
     setProgress();
 
     const renderIcon = window.renderLunaIcon || ((n) => n);
@@ -149,13 +155,15 @@
       celebrateCorrect(correctCube);
     }
 
-    els.feedbackTitle.textContent = correct ? "✦ נכון! כל הכבוד" : "✦ כמעט — הנה ההישג האמיתי";
-    els.feedbackText.textContent = q.fact;
-    els.nextBtn.textContent = index + 1 >= TOTAL ? "עובר לתוצאות…" : "עובר הלאה…";
-    els.nextBtn.disabled = true;
-    els.feedback.classList.add("show");
+    els.feedbackTitle.textContent = correct ? "✦ נכון! כל הכבוד" : "✦ כמעט — והנה מה שעשינו";
+    if (els.achievementTitle) {
+      els.achievementTitle.textContent = q.achievementTitle || "ההישג שלנו";
+    }
+    els.feedbackText.textContent = q.achievement || q.fact || "";
+    els.nextBtn.textContent = index + 1 >= TOTAL ? "לתוצאות" : "הבא";
+    els.nextBtn.disabled = false;
+    showFeedback();
     els.scoreChip.textContent = `שאלה ${index + 1} מתוך ${TOTAL} · ניקוד: ${score}`;
-    scheduleAdvance();
   }
 
   function celebrateCorrect(cube) {
@@ -291,8 +299,7 @@
   }
 
   function next() {
-    clearAdvanceTimer();
-    els.nextBtn.disabled = false;
+    hideFeedback();
     index += 1;
     if (index >= TOTAL) {
       finish();
@@ -311,19 +318,19 @@
     els.resultScore.innerHTML = `${score}<small>מתוך ${TOTAL}</small>`;
 
     let title = "כל הכבוד!";
-    let text = "למדת הישגים חשובים של הציונות הדתית — כלכלה חזקה וביטחון ללא פשרות.";
+    let text = "ענית על ידע כללי — ואחרי כל תשובה גילית הישג של הציונות הדתית.";
 
     if (pct === 100) {
-      title = "אלוף ההישגים!";
-      text = "ידעת הכול. אתה מכיר את העשייה שלנו לעומק — כלכלה, משפחות וביטחון.";
+      title = "אלוף הידע!";
+      text = "ידעת הכול — ועכשיו גם ראית מה קידמנו בכלכלה, למשפחות ובביטחון.";
       burstConfetti();
     } else if (pct >= 70) {
       title = "מרשים מאוד!";
-      text = "יש לך אצבע על הדופק. המפלגה מובילה מהלכים שמרגישים בכיס ובביטחון.";
+      text = "ידע כללי חזק — וכל תשובה חשפה הישג אמיתי שלנו.";
       burstConfetti();
     } else if (pct >= 40) {
       title = "יפה, יש לאן להתקדם";
-      text = "כמה עובדות חדשות נכנסו — והן מראות עשייה חיובית למען האזרחים.";
+      text = "גם כשטועים — לומדים: אחרי כל שאלה נחשף מה עשינו בפועל.";
     } else {
       title = "עכשיו אתה מעודכן";
       text = "כל תשובה פתחה הישג אמיתי. שווה לשתף ולשחק שוב!";

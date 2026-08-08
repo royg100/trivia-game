@@ -123,6 +123,7 @@ body::after {
   display: inline-flex;
   align-items: center;
   flex-shrink: 0;
+  perspective: 520px;
 }
 
 .brand-logo {
@@ -134,6 +135,24 @@ body::after {
   border-radius: 10px;
   background: #000;
   box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.12), 0 6px 18px rgba(0, 0, 0, 0.35);
+  transform-style: preserve-3d;
+  animation: logoSpin 6.5s linear infinite;
+  will-change: transform;
+}
+
+@keyframes logoSpin {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brand-logo {
+    animation: none;
+  }
 }
 
 .progress-panel {
@@ -658,27 +677,61 @@ body::after {
 }
 
 .feedback {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
   display: none;
-  margin-top: 18px;
-  padding: 20px 20px 18px;
-  border-radius: 20px;
-  background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent 40%),
-    linear-gradient(135deg, rgba(10, 16, 64, 0.95) 0%, rgba(18, 8, 46, 0.95) 55%, rgba(74, 40, 110, 0.9) 120%);
-  color: var(--white);
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35), 0 0 30px rgba(112, 209, 244, 0.12);
-  animation: fadeUp 0.35s var(--ease) both;
-  border: 1px solid rgba(112, 209, 244, 0.22);
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
 }
 
 .feedback.show {
-  display: block;
+  display: flex;
+}
+
+.feedback-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(3, 6, 28, 0.72);
+  backdrop-filter: blur(8px);
+}
+
+.feedback-dialog {
+  position: relative;
+  z-index: 1;
+  width: min(480px, 100%);
+  padding: 28px 24px 22px;
+  border-radius: 24px;
+  text-align: center;
+  color: var(--white);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.12), transparent 42%),
+    linear-gradient(160deg, rgba(10, 16, 64, 0.98) 0%, rgba(18, 8, 46, 0.98) 55%, rgba(74, 40, 110, 0.94) 120%);
+  border: 1px solid rgba(112, 209, 244, 0.28);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.5), 0 0 40px rgba(112, 209, 244, 0.14);
+  animation: feedbackPop 0.4s var(--ease) both;
+}
+
+@keyframes feedbackPop {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+body.feedback-open {
+  overflow: hidden;
 }
 
 .feedback strong {
   display: block;
-  font-size: 1.15rem;
-  margin-bottom: 6px;
+  margin: 0 auto 14px;
+  font-size: 1.25rem;
   background: var(--grad-luna);
   -webkit-background-clip: text;
   background-clip: text;
@@ -686,18 +739,49 @@ body::after {
   width: fit-content;
 }
 
+.achievement-card {
+  margin-bottom: 18px;
+  padding: 16px 16px 18px;
+  border-radius: 18px;
+  background: rgba(0, 0, 0, 0.28);
+  border: 1px solid rgba(112, 209, 244, 0.28);
+  text-align: center;
+}
+
+.achievement-kicker {
+  display: inline-block;
+  margin-bottom: 8px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--luna-cyan);
+}
+
+.achievement-title {
+  font-family: "Caravan", "Assistant", sans-serif;
+  font-size: clamp(1.35rem, 4vw, 1.7rem);
+  font-weight: 800;
+  margin-bottom: 10px;
+  color: var(--white);
+  line-height: 1.25;
+}
+
 .feedback p {
   opacity: 0.95;
-  line-height: 1.55;
-  margin-bottom: 14px;
+  line-height: 1.6;
+  margin-bottom: 0;
+  font-size: 1.05rem;
   color: rgba(235, 242, 255, 0.92);
 }
 
 .feedback .cta {
   color: #06102a;
   box-shadow: 0 8px 18px rgba(112, 209, 244, 0.25);
-  font-size: 1rem;
-  padding: 12px 22px;
+  font-size: 1.1rem;
+  font-weight: 800;
+  padding: 14px 36px;
+  min-width: 160px;
 }
 
 .feedback .cta::after {
