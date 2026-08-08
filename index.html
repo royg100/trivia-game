@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>כמה אתה יודע? | הציונות הדתית</title>
-  <meta name="description" content="שאלות ידע כללי — ואחרי כל תשובה ההישג של הציונות הדתית בכלכלה ובביטחון" />
-  <meta property="og:title" content="כמה אתה יודע? | הציונות הדתית" />
-  <meta property="og:description" content="ידע כללי קצר — ואז ההישג שלנו" />
+  <title>מלך הארץ | כמה אתה באמת מכיר</title>
+  <meta name="description" content="כמה אתה באמת מכיר מה קורה בארץ שלנו — שאלות ידע והישגים" />
+  <meta property="og:title" content="מלך הארץ | כמה אתה באמת מכיר" />
+  <meta property="og:description" content="כמה אתה באמת מכיר מה קורה בארץ שלנו" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700;800&family=Roboto:wght@400;500;700&family=Roboto+Slab:wght@600;700;800&display=swap" rel="stylesheet" />
@@ -34,12 +34,17 @@
     <!-- Start -->
     <section class="screen active" id="screen-start">
       <div class="hero">
-        <div class="hero-badge">ידע כללי · הישגים</div>
-        <h1 class="hero-brand"><span>הציונות הדתית</span></h1>
-        <h2>כמה אתה יודע?</h2>
-        <p>ענו על שאלות ידע כללי — ואחרי כל תשובה תגלו את ההישג שלנו בכלכלה ובביטחון.</p>
+        <h1 class="hero-brand"><span>מלך הארץ</span></h1>
+        <h2>כמה אתה באמת מכיר מה קורה בארץ שלנו</h2>
         <button class="cta" id="startBtn" type="button">יאללה נתחיל</button>
-        <div class="hero-cubes" aria-hidden="true" id="heroCubes"></div>
+        <figure class="hero-mascot">
+          <img
+            src="assets/king-of-the-land.png"
+            alt="מלך הארץ — נער ציוני דתי עם גיטרה"
+            width="420"
+            height="560"
+          />
+        </figure>
       </div>
     </section>
 
@@ -69,6 +74,15 @@
     <!-- Results -->
     <section class="screen" id="screen-result">
       <div class="results">
+        <figure class="results-mascot" aria-hidden="true">
+          <img
+            src="assets/king-of-the-land.png"
+            alt=""
+            width="280"
+            height="373"
+          />
+        </figure>
+        <p class="results-mascot-line" id="resultsMascotLine">מלך הארץ גאה בך</p>
         <div class="results-ring" id="resultRing">
           <div class="results-score" id="resultScore">0<small>מתוך 3</small></div>
         </div>
@@ -80,25 +94,6 @@
         </div>
       </div>
     </section>
-
-    <footer class="luna-footer">
-      <button type="button" class="luna-footer-btn" id="lunaFooterBtn">
-        <img src="assets/luna-logo.png" alt="" />
-        <span>Created by Luna</span>
-      </button>
-    </footer>
-  </div>
-
-  <div class="luna-modal" id="lunaModal" hidden>
-    <div class="luna-modal-backdrop" data-close-luna-modal></div>
-    <div class="luna-modal-card" role="dialog" aria-modal="true" aria-labelledby="lunaModalTitle">
-      <button type="button" class="luna-modal-x" data-close-luna-modal aria-label="סגור">×</button>
-      <img class="luna-modal-logo" src="assets/luna-logo.png" alt="Luna" />
-      <p class="luna-modal-kicker">LUNA</p>
-      <h2 class="luna-modal-title" id="lunaModalTitle">יאללה בוא ותצטרף למשפחה</h2>
-      <p class="luna-modal-body">Find Your Solution — בואו לבנות איתנו את הדבר הבא.</p>
-      <a class="cta luna-modal-cta" href="https://mentali.org.il/luna/" target="_blank" rel="noopener noreferrer">יאללה, אני בפנים</a>
-    </div>
   </div>
 
   <script src="icons.js"></script>

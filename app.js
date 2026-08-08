@@ -22,6 +22,7 @@
     resultScore: document.getElementById("resultScore"),
     resultTitle: document.getElementById("resultTitle"),
     resultText: document.getElementById("resultText"),
+    resultsMascotLine: document.getElementById("resultsMascotLine"),
     replayBtn: document.getElementById("replayBtn"),
     shareBtn: document.getElementById("shareBtn"),
     confetti: document.getElementById("confetti"),
@@ -320,25 +321,31 @@
 
     let title = "כל הכבוד!";
     let text = "ענית על ידע כללי — ואחרי כל תשובה גילית הישג של הציונות הדתית.";
+    let mascotLine = "מלך הארץ מחייך אלייך";
 
     if (pct === 100) {
       title = "אלוף הידע!";
       text = "ידעת הכול — ועכשיו גם ראית מה קידמנו בכלכלה, למשפחות ובביטחון.";
+      mascotLine = "מלך הארץ: אתה מלך איתי";
       burstConfetti();
     } else if (pct >= 70) {
       title = "מרשים מאוד!";
       text = "ידע כללי חזק — וכל תשובה חשפה הישג אמיתי שלנו.";
+      mascotLine = "מלך הארץ גאה בך";
       burstConfetti();
     } else if (pct >= 40) {
       title = "יפה, יש לאן להתקדם";
       text = "גם כשטועים — לומדים: אחרי כל שאלה נחשף מה עשינו בפועל.";
+      mascotLine = "מלך הארץ: יאללה עוד סיבוב";
     } else {
       title = "עכשיו אתה מעודכן";
       text = "כל תשובה פתחה הישג אמיתי. שווה לשתף ולשחק שוב!";
+      mascotLine = "מלך הארץ מחכה לך בגיטרה";
     }
 
     els.resultTitle.textContent = title;
     els.resultText.textContent = text;
+    if (els.resultsMascotLine) els.resultsMascotLine.textContent = mascotLine;
   }
 
   function burstConfetti() {
@@ -380,47 +387,10 @@
     }
   }
 
-  const lunaModal = document.getElementById("lunaModal");
-  const lunaFooterBtn = document.getElementById("lunaFooterBtn");
-
-  function openLunaModal() {
-    if (!lunaModal) return;
-    lunaModal.hidden = false;
-    document.body.classList.add("luna-modal-open");
-  }
-
-  function closeLunaModal() {
-    if (!lunaModal) return;
-    lunaModal.hidden = true;
-    document.body.classList.remove("luna-modal-open");
-  }
-
-  if (lunaFooterBtn) {
-    lunaFooterBtn.addEventListener("click", openLunaModal);
-  }
-  if (lunaModal) {
-    lunaModal.querySelectorAll("[data-close-luna-modal]").forEach((el) => {
-      el.addEventListener("click", closeLunaModal);
-    });
-  }
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") closeLunaModal();
-  });
-
   els.startBtn.addEventListener("click", startGame);
   els.nextBtn.addEventListener("click", next);
   els.replayBtn.addEventListener("click", startGame);
   els.shareBtn.addEventListener("click", share);
-
-  const heroCubes = document.getElementById("heroCubes");
-  if (heroCubes && window.renderLunaIcon) {
-    ["chart", "shield", "home", "medal"].forEach((name) => {
-      const el = document.createElement("div");
-      el.className = "float-cube";
-      el.innerHTML = window.renderLunaIcon(name);
-      heroCubes.appendChild(el);
-    });
-  }
 
   setProgress();
 })();
