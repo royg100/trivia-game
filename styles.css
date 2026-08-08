@@ -860,6 +860,8 @@ body.feedback-open {
 
 /* —— Luna footer —— */
 .luna-footer {
+  position: relative;
+  z-index: 5;
   margin-top: auto;
   padding-top: 28px;
   text-align: center;
@@ -870,22 +872,25 @@ body.feedback-open {
   align-items: center;
   gap: 8px;
   appearance: none;
-  border: none;
-  background: transparent;
+  border: 1px solid rgba(112, 209, 244, 0.22);
+  background: rgba(255, 255, 255, 0.06);
   cursor: pointer;
   font-family: inherit;
-  color: rgba(200, 214, 255, 0.45);
-  font-size: 11px;
-  font-weight: 600;
+  color: rgba(200, 214, 255, 0.78);
+  font-size: 12px;
+  font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  transition: color 0.2s ease, opacity 0.2s ease;
+  transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease;
   direction: ltr;
-  padding: 6px 8px;
+  padding: 10px 14px;
+  border-radius: 999px;
 }
 
 .luna-footer-btn:hover {
-  color: var(--luna-cyan-soft);
+  color: #fff;
+  background: rgba(112, 209, 244, 0.14);
+  border-color: rgba(112, 209, 244, 0.45);
 }
 
 .luna-footer-btn img {
@@ -908,7 +913,7 @@ body.luna-modal-open {
 .luna-modal {
   position: fixed;
   inset: 0;
-  z-index: 80;
+  z-index: 120;
   display: grid;
   place-items: center;
   padding: 20px;

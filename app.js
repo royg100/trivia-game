@@ -309,6 +309,7 @@
   }
 
   function finish() {
+    hideFeedback();
     els.progress.style.width = "100%";
     if (els.progressLabel) els.progressLabel.textContent = "100%";
     showScreen("result");
